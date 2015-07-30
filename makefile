@@ -4,6 +4,8 @@ LDFLAGS	=-LSFML-2.3/lib -lsfml-graphics -lsfml-window -lsfml-system
 EXEC	= bin/Cursed_Crown
 SRC	=$(wildcard src/*.cpp)
 OBJ	=$(SRC:.cpp=.o)
+INC	=$(SRC:.cpp=.hpp)
+INL	=$(INC:.hpp=.inl)
 
 all: $(EXEC)
 
@@ -12,6 +14,8 @@ $(EXEC): $(OBJ)
 	
 %.o: %.cpp
 	$(CC) $(CFLAGS) -o $@ -c $<
+
+%.cpp: %.hpp
 
 clean:
 	rm -f src/*.o bin/*
